@@ -12,29 +12,31 @@ char * my_strstr(char str[],char sub[])
         {
             for(j = 0; sub[j] != '\0'; j++) // ? Inner loop for checking with the next elements of substring with main string
             {
-                if(str[i + j] != sub[j])    // ? Checking 
+                if(str[i + j] != sub[j])    // ? Checking if the word matches with the substring and if it matches it does not enter in if block
                 {
                     i = i + j;
                     break;
                 }
             }
-            if(sub[j] == '\0')
+            if(sub[j] == '\0') 
             {
-                int count = i;
+                int m;
                 for(int k = 0; k <= size; k++)
                 {
-                    str[count] = str[count + 1];
-                    count++;
+                    for( m = i; str[m] != '\0'; m++)
+                    {
+                        str[m] = str[m + 1];
+                    }
                 }
             }
         }
     }
-    return NULL;
+    return str;
 }
 void main()
 {
-    char str[] = "hi how are you";
-    char sub[] = "how";
+    char str[] = "hi how are you how are";
+    char sub[] = "are";
     char *cptr = my_strstr(str,sub);
     if(cptr != NULL)
     {
