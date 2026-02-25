@@ -1,0 +1,25 @@
+WAF to check num is palindrome or not
+WAF to square the num
+WAF to print the factors of the num
+WAF to convert uppercase to lowercase
+WAF to find the area of circle
+WAF to find max number between 2 numbers
+WAF to find max number between 3 numbers
+WAF to find the factorial of num                
+WAF to reverse a num
+WAF to find sum of digits
+WAF to calculate average of 3 numbers
+WAF to find sum of even numbers from 1 to n
+WAF to check num is -ve, +ve or zero
+WAF to check character is vowel
+WAF to find sum of first n natural numbers
+WAF to find 2 numbers are equal or not
+WAF to calculate no. of digits in a number
+WAF to find power of a number
+WAF to check num is even and < 100
+WAF to check the num is in range 50 - 100
+WAF to check num is a strong number
+WAF to count even digits in num
+WAF to check sum of digits is even 
+WAF to check sum of square of digits is prime or not
+WAF to check if num is spy number

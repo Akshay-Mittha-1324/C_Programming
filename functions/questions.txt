@@ -1,0 +1,4 @@
+Function can return only one value.
+Function can return the local variable.
+Function cannot return the address of the local variable.
+There should not be multiple defination of one function.
