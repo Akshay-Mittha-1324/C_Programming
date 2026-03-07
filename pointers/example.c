@@ -38,11 +38,36 @@ void main()
     printf("\n");
 }
 #endif
-#if 1
+#if 0
 void main()
 {
     char a[] = "Hello World";
     a[5] = 4[a] - *(a + 7);
     printf("%c\t%s\n",a[5],4[a],*(a + 7),a);
+}
+#endif
+#if 1
+void main()
+{
+    int a = 10, b = 11;
+    int *p, *q;
+    p = &a;
+    //printf("a = %d %d %#lX %p\n",a,*p,p,p);
+    
+    //q = *p;   // ? Its illegal in C as pointer can only hold address so value cannot be assigned to pointer leads to Segmentation Fault
+
+    //printf("Size of pointer = %zu\n",sizeof p);
+
+    //*q = p; // ? This will store the address of p pointer
+    //printf("value of q = %u %u %u\n",*q,p,&a);    // ? According to above statement both will print same value address of p stored in q pointer
+
+    //q = p;  // ? This will store the address of p into q
+    //printf("address of p = %p %p %p\n",p,q,&a);
+
+    // *q = *p;
+    // printf("value in q %u\n",*q);
+
+    q = &p;
+    printf("q = %u p = %u a = %u\n",*q,p,&a);
 }
 #endif
