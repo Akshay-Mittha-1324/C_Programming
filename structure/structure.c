@@ -128,7 +128,7 @@ void main()
 }
 #endif
 
-#if 1
+#if 0
 
 struct student
 {
@@ -152,4 +152,128 @@ void main()
     disp();
     new();
 }
+#endif
+
+#if 0
+struct Student
+{
+    int id;
+};
+void data(struct Student s1)
+{
+    s1.id = 10;
+    printf("In function using pass by value = %d\n",s1.id); // ? Variable of Structure is modified within function it will not reflect in main 
+}
+void main()
+{
+    struct Student s;
+    data(s);
+    printf("In main = %d\n",s.id);
+}
+#endif
+
+#if 0
+struct Student
+{
+    int id;
+};
+void data(struct Student *s)
+{
+    s -> id = 10;
+    printf("In function using pass by reference = %d\n",s->id); // ? Pointer is used to modify the actual variable of main 
+}
+void main()
+{
+    struct Student s;
+    data(&s);
+    printf("In main = %d\n",s.id);
+}
+#endif
+
+// struct Student 
+// {
+//     int id;
+//     char name[20];
+//     char address[60];
+// };
+
+#if 0
+struct Student data()
+{
+    struct Student s = {10};
+    return s;
+}
+void main()
+{
+    struct Student s;
+    s = data();
+    printf("Student id = %d\n",s.id);
+}
+#endif
+
+#if 0
+void read_data(struct Student *s)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        scanf("%d",&s[i].id);
+        scanf("%s",s[i].name);
+        scanf("%s",s[i].address);
+    }
+}
+void print_data(struct Student *s)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        printf("Id = %d\nName = %s\nAddress = %s\n",s[i].id,s[i].name,s[i].address);
+    }
+}
+void main()
+{
+    struct Student s[5];    // ? Structure Array
+    read_data(s);
+    print_data(s);
+}
+#endif
+
+// ? Nested Structure
+struct College
+{   
+    struct Student
+    {
+        int id;
+        char name[20];
+        char address[60];
+    }student;
+    struct
+    {
+        int id;
+        char name[20];
+        char address[60];
+    }faculty;
+};
+#if 1
+void main()
+{
+    struct College member;
+    member.student.id = 10;
+    member.faculty.id = 20;
+    printf("%d\t%zu\n",member.student.id,sizeof(struct College));
+    printf("%d\t%zu\n",member.faculty.id,sizeof(struct Student));
+}
+#endif
+#if 0
+
+// ? Nested Structure same declaration in different format
+struct Student
+{
+    int id;
+    char name[20];
+    char address[60];
+};
+struct College
+{
+    struct Student s;
+};
+
 #endif
