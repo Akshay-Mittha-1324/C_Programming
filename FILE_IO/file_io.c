@@ -326,6 +326,28 @@ int main()
 }
 #endif
 
+#if 0
+int main()
+{
+    FILE *fp, *fc;
+    fp = fopen("new.txt","r");
+    fc = fopen("n1.txt","w");
+    if(fp == NULL || fc == NULL)
+    {
+        perror("ERROR");
+        return -1;
+    }
+    char ch;
+    while(fread(&ch , sizeof(ch), 1, fp) > 0)
+    {
+        fwrite(&ch, sizeof(ch), 1, fc);
+    }
+    fclose(fc);
+    fclose(fp);
+    return 0;
+}
+#endif
+
 #if 1
 int main()
 {
