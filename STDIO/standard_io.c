@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<ctype.h>
 #include<unistd.h>
+//#include<stdio_ext.h> // ? Used for fpurge function
 
 // ? Unformatted Input 
 
@@ -244,7 +245,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 int main()
 {
     int num1 = 123;
@@ -255,5 +256,158 @@ int main()
     sprintf(string2, "%d %c %f %s\n",num1 , ch, num2, string1); // ? It is stored into the string2 buffer
     printf("%s", string2);  // ? To print the buffer
     return 0;
+}
+#endif
+
+#if 0
+
+// ? Buffering 
+
+int main()
+{
+    while(1)
+    {
+        printf("Hello\n"); // ? Writing the data to the buffer and if buffer is full it prints the output to scree
+        fflush(stdout);
+        sleep(1);
+    }
+    return 0;   // ? When program terminates the buffer will print on the screen
+}
+
+#endif
+
+#if 0
+
+int main()
+{
+    int i = 0;
+    while(1)
+    {
+        printf("%d. Hello\n",i);  // ? \n will act as the fflush that will flush the buffer 
+        sleep(1);
+        i++;
+    }
+    return 0;
+}
+
+#endif
+
+#if 0
+
+int main()
+{
+    setbuf(stdout,NULL);    // ? set the output buffer to 0 using the setbuf function
+    while(1)
+    {
+        printf("Hello");
+        sleep(1);
+    }
+    return 0;
+}
+
+#endif
+
+#if 0
+int main()
+{
+    int num = 0;
+    while(1)
+    {
+        printf("Enter the number : ");
+        scanf("%d",&num);   // ? During the read function the buffer will print the data on the screen
+    }
+    return 0;
+}
+#endif
+#if 0
+int main()
+{
+    char str[BUFSIZ] = "1"; // ? Wait till the buffer is full BUFSIZ 8192 bytes 8k b
+    while(1)
+    {
+        printf("%s",str);
+        sleep(1);
+    }
+    return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+    char str[BUFSIZ] = "1"; 
+    setbuf(stdout,NULL);    // ? This will disable the buffer to let it get full and prints immediately after taking the data from printf
+    while(1)
+    {
+        printf("%s",str);
+        sleep(1);
+    }
+    return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+    char ch = 'y';
+    printf("Enter the char : ");
+    while(ch != 'n')
+    {
+        scanf("%c",&ch);    // ? Read input from the user and store it in the input buffer
+        
+        printf("%c",ch);    // ? It will print all the data present in the output buffer
+    }
+    printf("\n");
+    return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+    char ch = 'y';
+    printf("Enter the char : ");
+    while(ch != 'n')
+    {
+        scanf("%c",&ch);    // ? Read input from the user and store it in the input buffer
+        
+        while(getchar() != '\n');   // ? Getchar will take characters after single char from scanf till user enters 
+        
+        printf("%c",ch);    // ? It will print all the data present in the output buffer
+    }
+    printf("\n");
+    return 0;
+}
+#endif
+
+#if 1
+
+int main()
+{
+    char ch = 'y';
+    printf("Enter the char : ");
+    while(ch != 'n')
+    {
+        scanf("%c",&ch);    // ? Read input from the user and store it in the input buffer
+
+        //while(getchar() != '\n');
+
+        __fpurge(stdin);    // ? Using the function another method 
+        
+        printf("%c",ch);    // ? It will print all the data present in the output buffer
+    }
+    printf("\n");
+    return 0;
+}
+#endif
+#if 0
+int main()
+{
+    while(1)
+    {
+        fprintf(stdout,"Hello");
+        fprintf(stderr,"World");
+        sleep(1);
+    }
 }
 #endif
