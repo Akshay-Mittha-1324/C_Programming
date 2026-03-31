@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<unistd.h>
 #if 0
 char *foo()
 {
@@ -119,7 +120,7 @@ int main()
     return 0;
 }
 #endif
-#if 1
+#if 0
 
 int x;
 static int x = 10;
@@ -135,4 +136,79 @@ int main()
     foo();
     return 0;
 }
+#endif
+
+#if 0
+
+int num;
+
+void foo1();
+void foo2();
+
+int main()
+{
+    while(1)
+    {
+        num++;
+        foo1();
+        sleep(1);
+        foo2();
+        sleep(1);
+    }
+}
+#endif
+#if 0
+int num;
+void foo1();
+int main()
+{
+    while(1)
+    {
+        num++;
+        foo1();
+        sleep(1);
+        printf("num in main : %d\n",num);
+    }
+}
+#endif
+#if 0
+int num;
+int foo2();
+int main()
+{
+    while(1)
+    {
+        num++;
+        foo2();
+        //sleep(1);
+        printf("int in num = %d\n",num);
+    }
+}
+#endif
+
+#if 0
+int main()
+{
+    int x;
+    {
+        int x = 10;
+        {
+            extern int x;
+            printf("1 %d\n",x);
+        }
+        printf("2 %d\n",x);
+    }
+    printf("3 %d\n",x);
+}
+int x = 20;
+#endif
+
+#if 1
+int main()
+{
+    extern char x;
+    printf("x %c \n",x);
+    return 0;
+}
+int x = 0x31;
 #endif
