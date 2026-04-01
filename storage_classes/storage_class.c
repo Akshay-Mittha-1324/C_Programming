@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<unistd.h>
+#include<string.h>
+
 #if 0
 char *foo()
 {
@@ -203,7 +205,7 @@ int main()
 int x = 20;
 #endif
 
-#if 1
+#if 0
 int main()
 {
     extern char x;
@@ -211,4 +213,105 @@ int main()
     return 0;
 }
 int x = 0x31;
+#endif
+
+#if 0
+// ? Static Function
+int num;
+
+void fun1();
+
+int main()
+{
+    while(1)
+    {
+        num++;
+        fun1();
+        sleep(1);
+    }
+    return 0;
+}
+#endif
+
+#if 0
+int num;
+
+void fun1();
+void fun2();
+
+int main()
+{
+    while(1)
+    {
+        num++;
+        fun1();
+        sleep(1);
+        fun2();
+        sleep(1);
+    }
+    return 0;
+}
+#endif
+#if 0
+int main()
+{
+    int num;
+    num = 123;
+    num = 234;
+    num = 345;
+    return 0;
+}
+#endif
+#if 0
+
+// ? Loading program
+
+int main()
+{
+    int i , j , k;
+    for(i = 1; i <= 100; i++)
+    {
+        printf("\rLoading [");
+
+        for(j = 1; j <= 100; j++)
+        {
+            j <= i ? putchar('-') : putchar(' ');
+        }
+        printf("] %3d%%",i);
+        fflush(stdout);
+        for(k = 0xafffff; k--; );
+    }
+    printf("\nFinished\n");\
+    return 0;
+}
+#endif
+
+#if 1
+
+// ? Rotating program
+
+void rotate(char arr[],int n)
+{
+    int i;
+    char temp = arr[0];
+    for(i = 0; i < n - 1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+    arr[n - 1] = temp;
+}
+int main()
+{
+    char str[] = "                      Akshay";
+    int len = strlen(str);
+    while(1)
+    {
+        printf("\r%s",str);
+        fflush(stdout);
+        for(int k = 0x5ffffff; k--;);
+        //sleep(1);
+        rotate(str,len);
+    }
+    return 0;
+}
 #endif
