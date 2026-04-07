@@ -135,7 +135,7 @@ int main()
 
 #endif
 
-#if 1
+#if 0
 
 int main()
 {
@@ -145,5 +145,128 @@ int main()
     p2 = &arr[4];    
     int i = p2 - p1;    // ?
     printf("%d\n",i);
+}
+#endif
+
+#if 0
+
+// ? Rule 5 NULL Pointer
+
+int main()
+{
+    int *num = NULL;    // ? Declare and initialize
+
+    int *val;   // ? Declare 
+
+    val = NULL; // ? Then initialize
+
+    // ? num and val are pointing to 0th address which is reserved address by Kernel 
+    //printf("%d %d\n",*num,*val);    // ? Accessing to the NULL pointers will lead to Segmentation Fault
+
+    //*num = 123;
+    int *n;
+
+    *n = 123;   // ? Assigning to the garbage address
+    printf("%d\n%u\n",*n,n);    // ? Will work fine for some cases
+    return 0;
+}
+
+#endif
+
+#if 0
+int main()
+{
+    int num = 0;
+    scanf("%d", num);   // ? Will lead to segmentation fault this is runtime error (num = 0 and zero is taken as 0th address)
+    printf("%d\n",num);
+}
+#endif
+
+
+#if 0
+
+// ? Void pointer
+
+int main()
+{
+    double x = 7.2;
+
+    void *vptr = &x;
+
+    printf("%hhX\n",*(char *) vptr);
+    printf("%hhX\n",*(char *) (vptr + 7));
+    printf("%hX\n",*(short *) (vptr + 3));
+    printf("%X\n",*(int *) (vptr + 0));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+// ? WAP to swap any given data type
+
+void swap(void *first, void *second, int size)
+{
+    char temp;
+    int i = 0;
+    for(i = 0; i < size; i++)
+    {
+        temp = *(char *) first;
+        *(char *) first = *(char *) second;
+        *(char *) second = temp;
+    }
+}
+
+int main()
+{
+    int n1 = 10, n2 = 20;
+    printf("Before Swap : %d %d\n",n1,n2);
+    swap(&n1,&n2,sizeof(int));
+    printf("After Swap : %d %d\n",n1,n2);
+
+    char c1 = 'A', c2 = 'B';
+    printf("Before Swap : %c %c\n",c1,c2);
+    swap(&c1,&c2,sizeof(char));
+    printf("After Swap : %c %c\n",c1,c2);
+
+    double d1 = 12.5034094, d2 = 11.242424;
+    printf("Before Swap : %lf %lf\n",d1,d2);
+    swap(&d1,&d2,sizeof(double));
+    printf("After Swap : %lf %lf\n",d1,d2);
+
+    int a[] = {1, 2, 3}, b[] = {4, 5, 6};
+    printf("Before Swap : \nA : ");
+    for(int i = 0; i < 3; i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\nB : ");
+    for(int i = 0; i < 3; i++)
+    {
+        printf("%d ",b[i]);
+    }    
+    swap(a,b,sizeof(a));
+    printf("\nAfter Swap : \nA : ");
+    for(int i = 0; i < 3; i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\nB : ");
+    for(int i = 0; i < 3; i++)
+    {
+        printf("%d ",b[i]);
+    }
+    printf("\n");
+}
+
+#endif
+
+#if 1
+int main()
+{
+    char str[5] = "Emertxe";
+    printf("%s\n",str);
+    return 0;
 }
 #endif
