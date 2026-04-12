@@ -318,3 +318,36 @@ int main()
 }
 
 #endif
+
+#if 0
+
+int main()
+{
+    char *ptr = malloc(5);
+
+    ptr = ptr - ptr;
+
+    return 0;
+}
+
+#endif
+
+#if 0
+
+int main()
+{
+    char arr[sizeof(int) + 1];
+
+    int *p1, *p2;
+
+    p1 = &arr[0];
+    p2 = &arr[1];
+
+    scanf("%x %x",p1,p2);   // ? 12345678   abcdefff
+
+    printf("%x %x\n",*p1,*p2);  // ? ff ef cd 78    ab cd ef ff
+
+    return 0;
+}
+
+#endif
