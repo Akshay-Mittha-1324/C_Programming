@@ -1,0 +1,6 @@
+/.vscode
+
+# compiled files
+*.out
+**.out
+***.out
