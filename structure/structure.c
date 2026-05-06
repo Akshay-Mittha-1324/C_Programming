@@ -1,3 +1,39 @@
+/*
+    Structure Padding 
+    - Adding the extra bytes is known as structure padding
+
+    Structure Padding is Based on 3 following things
+    - Based on the member arrangement
+    - Based on largest member (highest datatype)
+    - Also Based on Word size (Amount of data a processor can fetch and process at one time is known as word)
+
+    - It is done for data alignment (Proper arrangement of data)
+    - Quick and Fast accessing
+
+    Bit Fields 
+    - Memory allocation in bits
+    - Bit fields can only with structures and unions
+    - Bit fields can only used for integral data type (only for char and int)
+    - Minimum memory allocation for a bit field member would be a byte can be broken or divided into 8 variables or 2 variables 
+    - Maximum number of bits that can be used is based on size of the datatype (ex. char max will be 8 bits)
+    - Default size is based on bitness of system or word size
+    
+    Eg. struct Nibble
+    {
+        unsigned char lower : 4;
+        unsigned char upper : 4;
+    };
+
+    int main()
+    {
+        strcut Nibble nibble;
+
+        nibble.lower = 0x02;
+        nibble.upper = 0x0A;
+    }
+
+*/
+
 #include<stdio.h>
 #include<string.h>
 
@@ -236,6 +272,8 @@ void main()
 }
 #endif
 
+#if 0
+
 // ? Nested Structure
 struct College
 {   
@@ -252,7 +290,6 @@ struct College
         char address[60];
     }faculty;
 };
-#if 1
 void main()
 {
     struct College member;
@@ -262,6 +299,7 @@ void main()
     printf("%d\t%zu\n",member.faculty.id,sizeof(struct Student));
 }
 #endif
+
 #if 0
 
 // ? Nested Structure same declaration in different format
@@ -275,5 +313,239 @@ struct College
 {
     struct Student s;
 };
+
+#endif
+
+#if 0
+
+struct Student
+{
+    char ch1;
+    int id;
+    char ch2;
+};
+
+int main()
+{
+    printf("%zu\n",sizeof(struct Student));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Student
+{
+    char ch1;
+    char ch2;
+    int id;
+};
+
+int main()
+{
+    printf("%zu\n",sizeof(struct Student));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Student
+{
+    char ch1;
+    double id;
+    char ch2;
+};
+
+int main()
+{
+    printf("%zu\n",sizeof(struct Student));
+    return 0;
+}
+
+
+#endif
+
+#if 0
+
+struct Student
+{
+    char ch1;
+    char ch2;   // ? After one byte it will pad 2 bytes
+    double id;
+};
+
+int main()
+{
+    printf("%zu\n",sizeof(struct Student));
+    return 0;
+}
+#endif
+
+#if 0
+
+// ? Bit Fields 
+struct Nibble
+    {
+        unsigned char lower : 4;    // ? Will get stored in the lsb side
+        unsigned char upper : 4;    // ? Will get stored in the msb side
+    };
+    int main()
+    {
+        struct Nibble nibble;
+
+        nibble.lower = 0x02;
+        nibble.upper = 0x0A;
+    }
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    unsigned char lower : 4;
+    unsigned char upper : 4;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("Size of the Structure is %zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    unsigned lower : 4; // ? By default to integer datatype
+    unsigned upper : 4;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("Size of the structure is %zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    unsigned char v1    : 1;
+    unsigned char v2    : 1;
+    unsigned char v3    : 1;
+    unsigned char v4    : 1;
+    unsigned char v5    : 1;
+    unsigned char v6    : 1;
+    unsigned char v7    : 1;
+    unsigned char v8    : 1;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("%zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    unsigned lower : 6; 
+    unsigned upper : 7;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("Size of the structure is %zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    unsigned lower : 10;    // ? Will give compiler error due to width of the lower exceeds its type
+    unsigned upper : 9;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("Size of the structure is %zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    float lower : 10;   // ? Invalid type for the bit field only integral is allowed
+    double upper : 9;
+};
+
+int main()
+{
+    struct Nibble nibble;
+    printf("Size of the structure is %zu\n",sizeof(nibble));
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    char lower : 4; 
+    char upper : 4;
+};
+
+int main()
+{
+    struct Nibble nibble;
+
+    nibble.upper = 0x0A;    // ? Will store a negative number due to signed char so negative value is stored in the upper using 2's complement
+    nibble.lower = 0x02;
+
+    printf("%d\n%d\n",nibble.upper,nibble.lower);
+
+    return 0;
+}
+
+#endif
+
+#if 0
+
+struct Nibble 
+{
+    char lower : 4;
+    char upper : 4;
+};
+
+int main()
+{
+    struct Nibble nibble = {0x02, 0x0A};
+    printf("%#o\n%#x\n",nibble.upper,nibble.lower);
+    return 0;
+}
+
 
 #endif
