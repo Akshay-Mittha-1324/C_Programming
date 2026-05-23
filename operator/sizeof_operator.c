@@ -1,5 +1,6 @@
 #include<stdio.h>
-void main(){
+int main()
+{
     //Sizeof Operator is executed at the compile time
     int a;
     char b = 'B';
@@ -13,4 +14,9 @@ void main(){
     //printf("%ld\n",sizeof(short));
     printf("%ld\n",sizeof(long long));
     printf("%ld\n",sizeof('A'));
+
+    int num1 = 5;
+    int num2 = sizeof(++num1);
+    printf("num1 is %d and num2 is %d\n", num1, num2);
+    return 0;
 }
